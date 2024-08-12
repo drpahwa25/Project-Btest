@@ -11,20 +11,22 @@ pipeline {
             steps {
                 // Install Node.js dependencies
                 sh 'npm install'
+                // Install pm2 globally
+                sh 'npm install -g pm2'
             }
         }
 
         stage('Deploy') {
             steps {
-                // Start the application in the background and ensure it continues running after Jenkins finishes
-                sh 'nohup npm start > app.log 2>&1 & echo $! > .pidfile'
+                // Start the application using pm2
+                sh 'pm2 start npm --name "my-app" -- start'
             }
         }
     }
 
     post {
         always {
-            // Optional: Clean up workspace. Be careful not to remove logs or PID file if you need them.
+            // Clean up workspace
             cleanWs()
         }
     }
