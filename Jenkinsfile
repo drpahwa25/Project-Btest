@@ -18,7 +18,6 @@ pipeline {
                 // Install Node.js dependencies
                 sh 'npm install'
                 // Install pm2 globally
-                sh 'npm install -g pm2'
             }
         }
 
@@ -26,17 +25,10 @@ pipeline {
             steps {
                 // Start the application using pm2
                 // sh 'pm2 start npm --name "my-app" -- run start'
-                sh "pm2 startOrRestart pm2.config.json"
+                sh "npm run start"
             }
         }
     }
-
-    post {
-        always {
-            // Clean up workspace
-            cleanWs()
-        }
     }
-}
 
 }
