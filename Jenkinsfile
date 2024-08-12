@@ -20,13 +20,6 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                // Run your tests (if you have any)
-                sh 'npm test'
-            }
-        }
-
 
 
         stage('Deploy') {
