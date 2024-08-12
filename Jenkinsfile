@@ -27,7 +27,7 @@ pipeline {
               
                 // // Optionally, show the status of the running processes
                 // sh 'pm2 status'
-                sh "node index.js"
+                sh "node index.js &"
             }
         }
     }
