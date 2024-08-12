@@ -7,7 +7,7 @@ app.use(express.json());
 
 // Sample endpoints
 app.get("/", (req, res) => {
-  res.send("Hello, World! again");
+  res.send("Hello, World! again!!");
 });
 
 app.get("/api/data", (req, res) => {
