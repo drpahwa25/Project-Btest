@@ -13,15 +13,10 @@ pipeline {
             }
         }
 
-         stage('Install Dependencies') {
+        stage('Install Dependencies') {
             steps {
-                script {
-                    // Use nvm to install Node.js version
-                    sh 'nvm install ${NODE_VERSION}'
-                    sh 'nvm use ${NODE_VERSION}'
-                    // Install project dependencies
-                    sh 'npm install'
-                }
+                // Install project dependencies
+                sh 'npm install'
             }
         }
 
@@ -48,6 +43,21 @@ pipeline {
                     // sh 'pm2 restart express-app'
                 }
             }
+        }
+    }
+
+    post {
+        always {
+            // Clean up actions
+            cleanWs()
+        }
+
+        success {
+            echo 'Deployment successful!'
+        }
+
+        failure {
+            echo 'Deployment failed.'
         }
     }
 }
