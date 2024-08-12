@@ -27,12 +27,7 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                // Build your application if necessary (optional)
-                // sh 'npm run build'
-            }
-        }
+
 
         stage('Deploy') {
             steps {
