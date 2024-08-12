@@ -6,29 +6,28 @@ pipeline {
     }
 
     stages {
-
-        stage("Clone Repository"){
+        stage('Clone Repository') {
             steps {
                 git branch: 'main',
-                url: "https://github.com/coding-jaguar/demo.git"
+                    url: 'https://github.com/coding-jaguar/demo.git'
+            }
         }
 
         stage('Install Dependencies') {
             steps {
                 // Install Node.js dependencies
                 sh 'npm install'
-                // Install pm2 globally
+                // Install pm2 globally (if needed)
+                // sh 'npm install -g pm2'
             }
         }
 
         stage('Deploy') {
             steps {
-                // Start the application using pm2
+                // Start the application using pm2 (if needed)
                 // sh 'pm2 start npm --name "my-app" -- run start'
-                sh "npm run start"
+                sh 'npm run start'
             }
         }
     }
-    }
-
 }
