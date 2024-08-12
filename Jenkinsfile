@@ -23,10 +23,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Use pm2 to start the application
-                sh 'pm2 start npm --name "my-app" -- run start'
+                // sh 'pm2 start npm --name "my-app" -- run start'
               
-                // Optionally, show the status of the running processes
-                sh 'pm2 status'
+                // // Optionally, show the status of the running processes
+                // sh 'pm2 status'
+                sh "node index.js"
             }
         }
     }
