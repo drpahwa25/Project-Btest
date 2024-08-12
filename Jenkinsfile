@@ -17,6 +17,7 @@ pipeline {
             steps {
                 // Install project dependencies
                 sh 'npm install'
+                sh 'npm install pm2 -g'
             }
         }
 
