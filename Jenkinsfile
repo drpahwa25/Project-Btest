@@ -14,13 +14,18 @@ pipeline {
             }
         }
 
-
         stage('Deploy') {
             steps {
-                // Start the application
-                sh 'nohup npm start > app.log 2>&1 &'
+                // Start the application in the background and ensure it continues running after Jenkins finishes
+                sh 'nohup npm start > app.log 2>&1 & echo $! > .pidfile'
             }
         }
     }
 
+    post {
+        always {
+            // Optional: Clean up workspace. Be careful not to remove logs or PID file if you need them.
+            // cleanWs()
+        }
+    }
 }
