@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'node-22.5.1'  // This should match the name you gave in Global Tool Configuration
+    }
+
     stages {
 
         stage('Install Dependencies') {
