@@ -12,7 +12,7 @@ pipeline {
                 // Install Node.js dependencies
                 sh 'npm install'
                 // Install pm2 globally
-                sh 'npm install -g pm2'
+                // sh 'npm install -g pm2'
             }
         }
 
