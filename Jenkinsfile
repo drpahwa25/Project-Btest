@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     // Start your application using pm2 or any other process manager
-                    sh 'pm2 start app.js --name "express-app"'
+                    sh 'pm2 start index.js --name "express-app"'
                     // Optionally, you can use pm2 to restart the app instead
                     // sh 'pm2 restart express-app'
                 }
