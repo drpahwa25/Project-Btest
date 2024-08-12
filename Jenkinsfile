@@ -47,11 +47,7 @@ pipeline {
     }
 
     post {
-        always {
-            // Clean up actions
-            cleanWs()
-        }
-
+      
         success {
             echo 'Deployment successful!'
         }
