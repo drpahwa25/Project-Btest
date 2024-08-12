@@ -13,18 +13,40 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
-                sh 'npm install -g pm2'
+                script {
+                    // Use nvm to install Node.js version
+                    sh 'nvm install ${NODE_VERSION}'
+                    sh 'nvm use ${NODE_VERSION}'
+                    // Install project dependencies
+                    sh 'npm install'
+                }
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                // Run your tests (if you have any)
+                sh 'npm test'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Build your application if necessary (optional)
+                // sh 'npm run build'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'pm2 start index.js --name "my-app"'
-                sh 'pm2 save'
-                sh 'pm2 status'
+                script {
+                    // Start your application using pm2 or any other process manager
+                    sh 'pm2 start app.js --name "express-app"'
+                    // Optionally, you can use pm2 to restart the app instead
+                    // sh 'pm2 restart express-app'
+                }
             }
         }
     }
